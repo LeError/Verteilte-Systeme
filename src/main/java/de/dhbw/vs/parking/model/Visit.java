@@ -14,20 +14,36 @@ import java.util.concurrent.TimeUnit;
 @EqualsAndHashCode
 public class Visit {
 
+    /**
+     * Generated Id for Visits
+     */
     @Id
     @Getter
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BigInteger id;
 
+    /**
+     * Time at which the user checked his car in. Is set at object creation
+     */
     @Getter
     @Column(nullable = false)
     private Date checkIn = new Date();
 
+    /**
+     * Time at which the user checks out
+     */
     @Setter
     @Getter
     @Column
     private Date checkOut = null;
+
+    /**
+     * Indicator if visit was billed already
+     */
+    @Getter
+    @Column
+    private Boolean payed = false;
 
     /**
      * Calculates the minutes a visit lasted
@@ -57,8 +73,19 @@ public class Visit {
         return IPriceConstants.price * priceUnits;
     }
 
+    /**
+     * Signalises if the Visit is finished
+     * @return weather the visit is finished or not
+     */
     public Boolean isVisitFinished() {
         return checkOut != null;
+    }
+
+    /**
+     * Sets the visit state to billed
+     */
+    public void setPayed() {
+        payed = true;
     }
 
 }
