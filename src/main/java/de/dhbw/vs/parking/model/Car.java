@@ -34,8 +34,8 @@ public class Car {
         return visits.stream().filter(Visit::isVisitFinished).collect(Collectors.toSet());
     }
 
-    public Visit getOnGoingVisit() throws IllegalDataStateException {
-        Set<Visit> visits = this.visits.stream().filter(Visit::isVisitFinished).collect(Collectors.toSet());
+    public Visit getOngoingVisit() throws IllegalDataStateException {
+        Set<Visit> visits = this.visits.stream().filter(PredicateUtils.not(Visit::isVisitFinished)).collect(Collectors.toSet());
         if(visits.size() > 2) {
             throw new IllegalDataStateException("Two unfinished visits with one car are impossible. Illegal State!");
         }
