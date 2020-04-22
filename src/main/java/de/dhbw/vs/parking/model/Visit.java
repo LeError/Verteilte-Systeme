@@ -43,7 +43,7 @@ public class Visit {
      */
     @Getter
     @Column
-    private Boolean payed = false;
+    private boolean payed = false;
 
     /**
      * Calculates the minutes a visit lasted
