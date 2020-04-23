@@ -2,7 +2,10 @@ package de.dhbw.vs.parking.model;
 
 import de.dhbw.vs.parking.constants.IPriceConstants;
 import de.dhbw.vs.parking.exceptions.CarNotCheckedOutException;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -59,10 +62,10 @@ public class Visit {
 
     /**
      * Calculates Price for the visit
-     * @return price of the stay in currency
+     * @return price of the stay in currency if payed individual
      * @throws CarNotCheckedOutException thrown when the visit is not finished
      */
-    public Float getPrice() throws CarNotCheckedOutException {
+    public Float getIndividualPrice() throws CarNotCheckedOutException {
         if (checkOut == null) {
             throw new CarNotCheckedOutException("Could not calculate price of visit stay because it is not finished. Car is not checked out");
         }
