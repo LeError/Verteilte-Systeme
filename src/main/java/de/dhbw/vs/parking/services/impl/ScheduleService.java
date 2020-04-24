@@ -5,8 +5,8 @@ import de.dhbw.vs.parking.services.IScheduleService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-@Service public class ScheduleService
-implements IScheduleService {
+@Service
+public class ScheduleService implements IScheduleService {
 
     private final IBillService billService;
 
@@ -14,7 +14,9 @@ implements IScheduleService {
         this.billService = billService;
     }
 
-    @Override @Scheduled (cron = "0 0 */5 8 0") public void triggerAccounting () {
+    @Override
+    @Scheduled (cron = "0 0 */5 8 0")
+    public void triggerAccounting () {
         //TODO
     }
 
